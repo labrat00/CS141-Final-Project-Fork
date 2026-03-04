@@ -55,8 +55,8 @@ public class Menu {
 	}
 	public static void join() {
 		System.out.println("TO DO: prompt user for the kind of group they want to join and then give a few local or online options");
-		String input;
-		String[] groups = {"Snohomish Conservation District","Adopt a Stream Foundation"};
+		int input;
+		String[] groups = {"1. Snohomish Conservation District","2. Adopt a Stream Foundation","3. Earth Watch","4. exit"};
 		String[] descriptions = {
 				"""
 				Snohomish Conservation District’s mission is to work cooperatively with others
@@ -66,15 +66,34 @@ public class Menu {
 				to ensure that Pacific Northwest streams continue to provide healthy spawning and rearing
 				habitat for salmon, trout, steelhead, and other wildlife. While serving our growing
 				population by providing clean drinking water, and beautiful places for rest and relaxation.
+				""",
+				"""
+				Earthwatch connects people with scientists to conserve our planet. 
+				Our expeditions put you at the center of research and conservation worldwide. 
+				Are you ready to experience nature as you help protect it?
 				"""
 		};
-		String[] links = {"https://snohomishcd.org/","https://www.streamkeeper.org/"};
+		String[] links = {"https://snohomishcd.org/","https://www.streamkeeper.org/","https://earthwatch.org/"};
 		
-		wrapText("center","Here are some local and online groups you can join to help");
+		wrapText("center","Here are some local and online groups you can join to help",
+				"type the number and hit enter to learn more or");
 		wrapText("left",groups);
 		while (true) {
-			input = scnr.nextLine().trim();
 			
+			input = scnr.nextInt();
+			if (input == 1) {
+				System.out.println(descriptions[0] + "\n\n" + links[0]);				
+			}
+			else if (input == 2) {
+				System.out.println(descriptions[1] + "\n\n" + links[1]);
+			}
+			else if (input == 3) {
+				System.out.println(descriptions[2] + "\n\n" + links[2]);
+			}
+			else if (input == 4) {
+				printOptions();
+				break;
+			}
 		}
 		
 		
@@ -117,14 +136,13 @@ public class Menu {
 	           }
 	           else if(choice == ecosystems.length + 1) {
 	                System.out.println("Exiting Environmental Effects...");
+	                printOptions();
 	                break;
 	           }
 	           else {
 	                System.out.println("Invalid choice. Please try again.");
 	            }
 	       }
-	       System.out.println("here");
-//	       input.close();
 	    }
 	
 	public static void main(String[] args) {
