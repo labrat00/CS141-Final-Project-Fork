@@ -265,9 +265,11 @@ public class Menu {
 	    }
 	    
     }
-	public static void main() {
+	public static void main(String[] args) {
+		System.out.print("MAIN");
 		Scanner scnr = new Scanner(System.in);
 		runMenu(scnr);
+		
 	}
 	public static void runMenu(Scanner scnr) {
 		String input;
